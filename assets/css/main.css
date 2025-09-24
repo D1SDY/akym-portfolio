@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
@@ -152,7 +151,6 @@ body main .container .about-and-social .social ul {
   transition-delay: 0.55s;
 }
 
-/* --- коли активний LIBRARY (наведено на #lib) --- */
 #lib:target ~ .library {
   opacity: 1;
   transform: translateY(0);
@@ -168,7 +166,6 @@ body main .container .about-and-social .social ul {
   transform: none;
 }
 
-/* hero зникає та піднімається наверх */
 #lib:target ~ .hero {
   opacity: 0;
   transform: translateY(-50%);
@@ -176,7 +173,6 @@ body main .container .about-and-social .social ul {
   pointer-events: none;
 }
 
-/* повернення до початкового стану */
 #home:target ~ .library {
   opacity: 0;
   transform: translateY(6%);
@@ -192,7 +188,6 @@ body main .container .about-and-social .social ul {
   transform: translateY(12px);
 }
 
-/* accessibility: без анімацій для користувачів з reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .library,
   .lib-title,
