@@ -11,11 +11,16 @@
     </head>
 
     <body>
+        <!-- tiny hash anchors to drive :target (stay hidden) -->
+        <span id="home" hidden></span>
+        <span id="lib" hidden></span>
+
         <header>
             <ul class="links">
-                <li>AKYM SYTNYK</li>
-                <li>LIBRARY</li>
-                <li>ABOUT</li>
+                <!-- wrap labels with links; looks identical, just clickable -->
+                <li><a href="#home">AKYM SYTNYK</a></li>
+                <li><a href="#lib">LIBRARY</a></li>
+                <li><a href="#home">ABOUT</a></li>
             </ul>
         </header>
 
@@ -33,23 +38,22 @@
                             of orchestral instruments in<br>
                             contemporary art contexts.
                         </p>
-
                     </div>
                     <div class="social">
                         <ul>
                             <li>
-                                <a href="#">
+                                <a href="https://www.instagram.com/sytnyk_sounds/?__d=1%2F" target="_blank">
                                     <img src="../assets/icons/insta.svg" alt="Instagram">
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="../assets/icons/spotify.svg" alt="Instagram">
+                                <a href="https://open.spotify.com/artist/5b6qYN7HLdS1AQcHWxBGEg" target="_blank">
+                                    <img src="../assets/icons/spotify.svg" alt="Spotify">
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="../assets/icons/youtube.svg" alt="Instagram">
+                                <a href="https://www.youtube.com/channel/UCwJ4mNOojHxYPsmNtaB45ow" target="_blank">
+                                    <img src="../assets/icons/youtube.svg" alt="Youtube">
                                 </a>
                             </li>
                         </ul>
@@ -57,7 +61,47 @@
                 </div>
             </div>
         </main>
-    </body>
 
+        <section class="library">
+            <ol class="tracks">
+                <li>
+                    <div class="row">
+                        <img src="../assets/icons/sun_kissed.svg" alt="sun kissed album cover">
+                        <p>SUNKISSED</p>
+                        <p>2:41</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <img src="../assets/icons/sun_kissed.svg" alt="sun kissed album cover">
+                        <p>DEALING</p>
+                        <p>2:43</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <img src="../assets/icons/sun_kissed.svg" alt="sun kissed album cover">
+                        <p>LEASSURE</p>
+                        <p>2:57</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <img src="../assets/icons/the_will.svg" alt="The will album cover">
+                        <p>THE WILL</p>
+                        <p>1:21</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <img src="../assets/icons/lo.svg" alt="LO album cover">
+                        <p>LO</p>
+                        <p>1:49</p>
+                    </div>
+                </li>
+            </ol>
+            <h2 class="lib-title">LIBRARY</h2>
+        </section>
+    </body>
 
 </html>
