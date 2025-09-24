@@ -168,9 +168,6 @@ body {
     }
 }
 
-
-
-/* --- коли активний LIBRARY (наведено на #lib) --- */
 #lib:target~.library {
     opacity: 1;
     transform: translateY(0);
@@ -186,7 +183,6 @@ body {
     transform: none;
 }
 
-/* hero зникає та піднімається наверх */
 #lib:target~.hero {
     opacity: 0;
     transform: translateY(-50%);
@@ -194,7 +190,6 @@ body {
     pointer-events: none;
 }
 
-/* повернення до початкового стану */
 #home:target~.library {
     opacity: 0;
     transform: translateY(6%);
@@ -210,7 +205,6 @@ body {
     transform: translateY(12px);
 }
 
-/* accessibility: без анімацій для користувачів з reduced motion */
 @media (prefers-reduced-motion: reduce) {
 
     .library,
