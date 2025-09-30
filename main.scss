@@ -2,14 +2,6 @@
     box-sizing: border-box;
 }
 
-
-html,
-body {
-    min-height: 100dvh;
-    // width: 1536px;
-    // height: 1024px;
-}
-
 html,
 body,
 .no-select {
@@ -72,9 +64,7 @@ body {
         main {
             flex: 1;
             display: flex;
-            align-items: flex-end;
             width: 100%;
-            height: 100%;
 
             .container-header {
                 h1 {
@@ -87,13 +77,19 @@ body {
             }
 
             .home {
-                height: 100%;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
                 width: 100%;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                align-items: end;
-                gap: 48px;
-                padding: 0 88px 82px;
+                padding: 0 0 88px 82px;
+
+                .home-row {
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    align-items: end;
+                    margin-top: auto;
+                }
 
                 .about-and-social {
                     align-self: end;
@@ -137,10 +133,65 @@ body {
     background-position: -27px 233px;
 
     .biography {
+        flex: 1;
         display: flex;
-        gap: 84px;
-        padding-bottom: 193px;
-        padding-left: 72px;
+        flex-direction: column;
+
+        .biography-row {
+            display: grid;
+            gap: 84px;
+            grid-template-columns: 1fr 1fr;
+
+            .container-header {
+                margin-top: auto;
+            }
+
+            .bio-text {
+                margin-top: 233px;
+                display: flex;
+                flex-direction: column;
+                gap: 322px;
+                max-width: 400px;
+
+                p {
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 1.03;
+                }
+
+                .contact {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+                    font-family: "Roboto", sans-serif;
+
+                    h2 {
+                        padding-bottom: 5px;
+                        font-weight: 500;
+                    }
+
+                    .contact-row {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 30px;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 1.03;
+                        letter-spacing: 0;
+                        align-items: center;
+
+                        img {
+                            height: 18px;
+                            width: 18px;
+                        }
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .home {
@@ -243,35 +294,5 @@ body {
 
     .about-and-social {
         justify-content: space-between;
-    }
-}
-
-
-
-// #home:target~.library {
-//     opacity: 0;
-//     transform: translateY(6%);
-//     pointer-events: none;
-// }
-
-// #home:target~.library .lib-title {
-//     transform: translateY(-100vh) scale(.25);
-// }
-
-// #home:target~.library .tracks li {
-//     opacity: 0;
-//     transform: translateY(12px);
-// }
-
-@media (prefers-reduced-motion: reduce) {
-
-    .library,
-    .lib-title,
-    .tracks li,
-    .about-section,
-    .about-content {
-        transition: none !important;
-        transform: none !important;
-        opacity: 1 !important;
     }
 }

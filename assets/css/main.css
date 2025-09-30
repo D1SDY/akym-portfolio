@@ -3,11 +3,6 @@
 }
 
 html,
-body {
-  min-height: 100dvh;
-}
-
-html,
 body,
 .no-select {
   -webkit-user-select: none;
@@ -60,9 +55,7 @@ body .page header .links a {
 body .page main {
   flex: 1;
   display: flex;
-  align-items: flex-end;
   width: 100%;
-  height: 100%;
 }
 body .page main .container-header h1 {
   margin: 0;
@@ -72,13 +65,18 @@ body .page main .container-header h1 {
   letter-spacing: 0;
 }
 body .page main .home {
-  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 0 88px 82px;
+}
+body .page main .home .home-row {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: end;
-  gap: 48px;
-  padding: 0 88px 82px;
+  margin-top: auto;
 }
 body .page main .home .about-and-social {
   align-self: end;
@@ -112,10 +110,56 @@ body .page main .biography {
   background-position: -27px 233px;
 }
 #about:target ~ .page .biography {
+  flex: 1;
   display: flex;
+  flex-direction: column;
+}
+#about:target ~ .page .biography .biography-row {
+  display: grid;
   gap: 84px;
-  padding-bottom: 193px;
-  padding-left: 72px;
+  grid-template-columns: 1fr 1fr;
+}
+#about:target ~ .page .biography .biography-row .container-header {
+  margin-top: auto;
+}
+#about:target ~ .page .biography .biography-row .bio-text {
+  margin-top: 233px;
+  display: flex;
+  flex-direction: column;
+  gap: 322px;
+  max-width: 400px;
+}
+#about:target ~ .page .biography .biography-row .bio-text p {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.03;
+}
+#about:target ~ .page .biography .biography-row .bio-text .contact {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  font-family: "Roboto", sans-serif;
+}
+#about:target ~ .page .biography .biography-row .bio-text .contact h2 {
+  padding-bottom: 5px;
+  font-weight: 500;
+}
+#about:target ~ .page .biography .biography-row .bio-text .contact .contact-row {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.03;
+  letter-spacing: 0;
+  align-items: center;
+}
+#about:target ~ .page .biography .biography-row .bio-text .contact .contact-row img {
+  height: 18px;
+  width: 18px;
+}
+#about:target ~ .page .biography .biography-row .bio-text .contact .contact-row p {
+  margin: 0;
 }
 #about:target ~ .page .home {
   display: none;
@@ -214,16 +258,5 @@ body .page main .biography {
   }
   .about-and-social {
     justify-content: space-between;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .library,
-  .lib-title,
-  .tracks li,
-  .about-section,
-  .about-content {
-    transition: none !important;
-    transform: none !important;
-    opacity: 1 !important;
   }
 }/*# sourceMappingURL=main.css.map */
