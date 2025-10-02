@@ -70,9 +70,6 @@ body .page main .home {
   flex-direction: column;
   width: 100%;
   padding: 0 0 88px 82px;
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.35s ease, transform 0.45s ease, visibility 0s linear 0s;
 }
 body .page main .home .home-row {
   width: 100%;
@@ -108,7 +105,7 @@ body .page main .biography {
 }
 body #about:target ~ .page {
   background: #434343 url("../img/background.jpg") no-repeat;
-  background-size: 46.40625% auto;
+  background-size: 46.40625% 55%;
   background-position: -27px 233px;
 }
 body #about:target ~ .page .biography {

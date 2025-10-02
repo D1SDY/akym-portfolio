@@ -128,7 +128,7 @@ body {
 
     #about:target~.page {
         background: #434343 url("../img/background.jpg") no-repeat;
-        background-size: calc(100% * 891 / 1920) auto;
+        background-size: calc(100% * 891 / 1920) calc(100% * 594 / 1080);
         background-position: -27px 233px;
 
         .biography {
