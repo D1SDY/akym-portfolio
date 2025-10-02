@@ -70,6 +70,9 @@ body .page main .home {
   flex-direction: column;
   width: 100%;
   padding: 0 0 88px 82px;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.35s ease, transform 0.45s ease, visibility 0s linear 0s;
 }
 body .page main .home .home-row {
   width: 100%;
@@ -103,48 +106,51 @@ body .page main .home .about-and-social .social ul {
 body .page main .biography {
   display: none;
 }
-
-#about:target ~ .page {
+body #about:target ~ .page {
   background: #434343 url("../img/background.jpg") no-repeat;
-  background-size: 46.40625% 55%;
+  background-size: 46.40625% auto;
   background-position: -27px 233px;
 }
-#about:target ~ .page .biography {
+body #about:target ~ .page .biography {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
-#about:target ~ .page .biography .biography-row {
+body #about:target ~ .page .biography .biography-row {
   display: grid;
-  gap: 84px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
 }
-#about:target ~ .page .biography .biography-row .container-header {
+body #about:target ~ .page .biography .biography-row .container-header {
   margin-top: auto;
+  padding-left: 72px;
 }
-#about:target ~ .page .biography .biography-row .bio-text {
+body #about:target ~ .page .biography .biography-row .container-header h1 {
+  line-height: 0.7;
+}
+body #about:target ~ .page .biography .biography-row .bio-text {
   margin-top: 233px;
+  margin-left: 170px;
   display: flex;
   flex-direction: column;
   gap: 322px;
   max-width: 400px;
 }
-#about:target ~ .page .biography .biography-row .bio-text p {
+body #about:target ~ .page .biography .biography-row .bio-text p {
   font-weight: 400;
   font-size: 24px;
   line-height: 1.03;
 }
-#about:target ~ .page .biography .biography-row .bio-text .contact {
+body #about:target ~ .page .biography .biography-row .bio-text .contact {
   display: flex;
   flex-direction: column;
   gap: 25px;
   font-family: "Roboto", sans-serif;
 }
-#about:target ~ .page .biography .biography-row .bio-text .contact h2 {
+body #about:target ~ .page .biography .biography-row .bio-text .contact h2 {
   padding-bottom: 5px;
   font-weight: 500;
 }
-#about:target ~ .page .biography .biography-row .bio-text .contact .contact-row {
+body #about:target ~ .page .biography .biography-row .bio-text .contact .contact-row {
   display: flex;
   flex-direction: row;
   gap: 30px;
@@ -154,14 +160,14 @@ body .page main .biography {
   letter-spacing: 0;
   align-items: center;
 }
-#about:target ~ .page .biography .biography-row .bio-text .contact .contact-row img {
+body #about:target ~ .page .biography .biography-row .bio-text .contact .contact-row img {
   height: 18px;
   width: 18px;
 }
-#about:target ~ .page .biography .biography-row .bio-text .contact .contact-row p {
+body #about:target ~ .page .biography .biography-row .bio-text .contact .contact-row p {
   margin: 0;
 }
-#about:target ~ .page .home {
+body #about:target ~ .page .home {
   display: none;
 }
 
@@ -189,7 +195,7 @@ body .page main .biography {
 }
 .library .tracks {
   padding: 0;
-  max-width: 1100px;
+  max-width: 1500px;
   margin-top: 88px;
   padding-left: 30px;
 }
@@ -209,7 +215,7 @@ body .page main .biography {
 .library .tracks li .row {
   display: grid;
   align-items: center;
-  grid-template-columns: 48px 150px 80px;
+  grid-template-columns: 48px 150px 80px 360px;
   gap: 50px;
 }
 .library .tracks li:nth-child(1) {
