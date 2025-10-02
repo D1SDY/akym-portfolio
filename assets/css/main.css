@@ -84,6 +84,7 @@ body .page main .home .about-and-social {
   align-items: flex-end;
   gap: 32px;
   justify-content: space-between;
+  padding-right: 100px;
 }
 body .page main .home .about-and-social .about {
   max-width: 400px;
