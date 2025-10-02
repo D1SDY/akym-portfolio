@@ -82,6 +82,9 @@ body {
                 flex-direction: column;
                 width: 100%;
                 padding: 0 0 88px 82px;
+                opacity: 1;
+                transform: none;
+                transition: opacity .35s ease, transform .45s ease, visibility 0s linear 0s;
 
                 .home-row {
                     width: 100%;
