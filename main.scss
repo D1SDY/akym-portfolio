@@ -161,50 +161,55 @@ body {
                 width: 40px;
             }
 
-            .tracks {
-                audio {
-                    display: none !important;
-                }
-
-                .track {
-                    .icon {
-                        position: relative;
-
-                        &::after {
-                            content: "▶";
-                            position: absolute;
-                            inset: 0;
-                            left: 14px;
-                            top: 14px;
-                            font-size: 1rem;
-                            line-height: 1;
-                            opacity: 0;
-                            transform: scale(0.9);
-                            transition: opacity .25s ease,
-                                transform .25s ease;
-                            will-change: opacity, transform;
-                            pointer-events: none;
-                        }
-
-                        &:hover::after {
-                            opacity: .85;
-                            transform: scale(1);
-                        }
-
-                        &.is-playing .icon::after {
-                            content: "❚❚";
-                            opacity: .85;
-                            transform: scale(1);
-                        }
-
-                        img {
-                            cursor: pointer;
-                            position: relative;
-                            display: inline-block;
-                        }
-                    }
-                }
+            .tracks audio {
+                display: none !important;
             }
+
+            .tracks .track .icon img {
+                cursor: pointer;
+                position: relative;
+                display: inline-block;
+            }
+
+            .tracks .track .icon {
+                position: relative;
+            }
+
+            .tracks .track .icon::after {
+                content: "▶";
+                position: absolute;
+                inset: 0;
+                left: 14px;
+                top: 14px;
+                font-size: 1rem;
+                line-height: 1;
+                opacity: 0;
+                transform: scale(0.9);
+                transition: opacity .25s ease,
+                    transform .25s ease;
+                will-change: opacity, transform;
+                pointer-events: none;
+            }
+
+            .tracks .track .icon:hover::after {
+                opacity: .85;
+                transform: scale(1);
+            }
+
+            .waveform {
+                width: 100%;
+                height: 35px;
+                display: block;
+                cursor: pointer;
+            }
+
+
+            .tracks .track.is-playing .icon::after {
+                content: "❚❚";
+                opacity: .85;
+                transform: scale(1);
+            }
+
 
             @media (prefers-reduced-motion: reduce) {
                 .tracks .track .icon::after {

@@ -247,6 +247,131 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const audioCtx = new AudioContext();
+                document.querySelectorAll('.tracks audio').forEach((audio) => {
+                    const container = audio.parentElement;
+                    const canvas = document.createElement('canvas');
+                    canvas.className = 'waveform';
+                    container.appendChild(canvas);
+                    const ctx = canvas.getContext('2d');
+                    let waveformData = null;
+                    const spacing = 4;
+                    const barWidth = 4;
+                    const maxHeight = 35;
+                    function drawWave(progress = 0) {
+                        canvas.width = container.clientWidth;
+                        canvas.height = maxHeight;
+                        const width = canvas.width;
+                        const height = canvas.height;
+                        ctx.clearRect(0, 0, width, height);
+                        if (!waveformData) return;
+                        const bars = waveformData.length;
+                        const totalBarsWidth = bars * barWidth + (bars - 1) * spacing;
+                        const offsetX = Math.max((width - totalBarsWidth) / 2, 0);
+                        const highlightIndex = Math.floor(progress * bars);
+                        for (let i = 0; i < bars; i++) {
+                            const amp = waveformData[i];
+                            const barHeight = amp * maxHeight;
+                            const x = offsetX + i * (barWidth + spacing);
+                            const y = (height - barHeight) / 2;
+                            ctx.fillStyle = i <= highlightIndex ? '#ffffff' : 'rgba(255,255,255,0.4)';
+                            const radius = 2;
+                            const r = Math.min(radius, barWidth / 2, barHeight / 2);
+                            ctx.beginPath();
+                            if (typeof ctx.roundRect === 'function') {
+                                ctx.roundRect(x, y, barWidth, barHeight, r);
+                            } else {
+                                ctx.moveTo(x + r, y);
+                                ctx.lineTo(x + barWidth - r, y);
+                                ctx.quadraticCurveTo(x + barWidth, y, x + barWidth, y + r);
+                                ctx.lineTo(x + barWidth, y + barHeight - r);
+                                ctx.quadraticCurveTo(x + barWidth, y + barHeight, x + barWidth - r, y + barHeight);
+                                ctx.lineTo(x + r, y + barHeight);
+                                ctx.quadraticCurveTo(x, y + barHeight, x, y + barHeight - r);
+                                ctx.lineTo(x, y + r);
+                                ctx.quadraticCurveTo(x, y, x + r, y);
+                            }
+                            ctx.closePath();
+                            ctx.fill();
+                        }
+                    }
+                    const src = audio.querySelector('source')?.src || audio.src;
+                    fetch(src)
+                        .then((res) => {
+                            if (!res.ok) throw new Error('Failed to fetch audio');
+                            return res.arrayBuffer();
+                        })
+                        .then((buf) => audioCtx.decodeAudioData(buf))
+                        .then((decoded) => {
+                            const channelData = decoded.getChannelData(0);
+                            const segments = 64;
+                            const blockSize = Math.floor(channelData.length / segments);
+                            const amplitudes = [];
+                            for (let i = 0; i < segments; i++) {
+                                let sum = 0;
+                                for (let j = 0; j < blockSize; j++) {
+                                    sum += Math.abs(channelData[i * blockSize + j]);
+                                }
+                                amplitudes.push(sum / blockSize);
+                            }
+                            const maxVal = Math.max(...amplitudes) || 1;
+                            waveformData = amplitudes.map((v) => v / maxVal);
+                            drawWave(0);
+                        })
+                        .catch((err) => {
+                            console.warn('Waveform generation failed; using placeholder data', err);
+                            const segments = 64;
+                            waveformData = Array.from({ length: segments }, () => Math.random() * 0.5 + 0.5);
+                            drawWave(0);
+                        });
+                    audio.addEventListener('timeupdate', () => {
+                        if (audio.duration) {
+                            drawWave(audio.currentTime / audio.duration);
+                        }
+                    });
+                    let seeking = false;
+                    function updateCurrentTime(e) {
+                        const rect = canvas.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const width = canvas.width;
+                        let ratio;
+                        if (waveformData && waveformData.length > 0) {
+                            const bars = waveformData.length;
+                            const totalBarsWidth = bars * barWidth + (bars - 1) * spacing;
+                            const offsetX = Math.max((width - totalBarsWidth) / 2, 0);
+                            const xRel = x - offsetX;
+                            ratio = xRel / totalBarsWidth;
+                        } else {
+                            ratio = x / width;
+                        }
+                        if (ratio < 0) ratio = 0;
+                        if (ratio > 1) ratio = 1;
+                        if (audio.duration) {
+                            audio.currentTime = ratio * audio.duration;
+                            drawWave(ratio);
+                        }
+                    }
+                    canvas.addEventListener('mousedown', (e) => {
+                        if (audio.paused) return;
+                        seeking = true;
+                        updateCurrentTime(e);
+                    });
+                    window.addEventListener('mousemove', (e) => {
+                        if (seeking) updateCurrentTime(e);
+                    });
+                    window.addEventListener('mouseup', () => {
+                        seeking = false;
+                    });
+                    window.addEventListener('resize', () => {
+                        const progress = audio.duration ? audio.currentTime / audio.duration : 0;
+                        drawWave(progress);
+                    });
+                });
+            });
+        </script>
     </body>
 
 </html>
