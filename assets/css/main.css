@@ -148,11 +148,6 @@ body .page .library .icon {
 body .page .library .tracks audio {
   display: none !important;
 }
-body .page .library .tracks .track .icon img {
-  cursor: pointer;
-  position: relative;
-  display: inline-block;
-}
 body .page .library .tracks .track .icon {
   position: relative;
 }
@@ -174,10 +169,15 @@ body .page .library .tracks .track .icon:hover::after {
   opacity: 0.85;
   transform: scale(1);
 }
-body .page .library .tracks .track.is-playing .icon::after {
+body .page .library .tracks .track .icon.is-playing .icon::after {
   content: "❚❚";
   opacity: 0.85;
   transform: scale(1);
+}
+body .page .library .tracks .track .icon img {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
 }
 @media (prefers-reduced-motion: reduce) {
   body .page .library .tracks .track .icon::after {
