@@ -27,7 +27,6 @@ body {
         color: #fff;
         background: #434343 url("../img/background.jpg") no-repeat;
         background-size: calc(100% * 1947 / 1920) calc(100% * 1298 / 1080);
-        // background-position: -27px -51px;
         transition:
             background-position .75s cubic-bezier(.2, .7, .2, 1),
             background-size .75s cubic-bezier(.2, .7, .2, 1);
@@ -157,18 +156,6 @@ body {
                     width: 48px;
                 }
             }
-
-            // .icon {
-            //     width: 40px;
-            // }
-
-            // .time {
-            //     width: 60px;
-            // }
-
-            // .title {
-            //     width: 300px;
-            // }
 
             .tracks audio {
                 display: none !important;
