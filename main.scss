@@ -27,7 +27,7 @@ body {
         color: #fff;
         background: #434343 url("../img/background.jpg") no-repeat;
         background-size: calc(100% * 1947 / 1920) calc(100% * 1298 / 1080);
-        background-position: -27px -51px;
+        // background-position: -27px -51px;
         transition:
             background-position .75s cubic-bezier(.2, .7, .2, 1),
             background-size .75s cubic-bezier(.2, .7, .2, 1);
@@ -56,11 +56,12 @@ body {
 
         h1 {
             margin: 0;
+            padding-top: 25px;
             font-family: "roc-grotesk-compressed", sans-serif;
             font-weight: 500;
             font-style: normal;
             font-size: clamp(3.5rem, 14.375vw, 14.375rem);
-            line-height: 0.82;
+            line-height: 0.68;
             letter-spacing: 0.35rem;
         }
 
@@ -157,9 +158,17 @@ body {
                 }
             }
 
-            .icon {
-                width: 40px;
-            }
+            // .icon {
+            //     width: 40px;
+            // }
+
+            // .time {
+            //     width: 60px;
+            // }
+
+            // .title {
+            //     width: 300px;
+            // }
 
             .tracks audio {
                 display: none !important;
@@ -179,8 +188,8 @@ body {
                 content: "▶";
                 position: absolute;
                 inset: 0;
-                left: 14px;
-                top: 14px;
+                left: 12px;
+                top: 12px;
                 font-size: 1rem;
                 line-height: 1;
                 opacity: 0;
@@ -205,6 +214,8 @@ body {
 
 
             .tracks .track.is-playing .icon::after {
+                left: 12px;
+                top: 12px;
                 content: "❚❚";
                 opacity: .85;
                 transform: scale(1);
@@ -266,10 +277,10 @@ body {
                     padding: 0 0 12rem 0;
 
                     .bio-text {
-                        max-width: 400px;
+                        max-width: 20rem;
                         padding-top: 129px;
                         font-weight: 400;
-                        font-size: 24px;
+                        font-size: clamp(1.5rem, 1rem + 1vw, 2.25rem);
                         line-height: 1.03;
                     }
 
@@ -283,6 +294,7 @@ body {
                             font-weight: 500;
                             padding: 0 0 0.3rem 0;
                             margin: 0;
+                            line-height: 0.8;
                         }
 
 
@@ -294,7 +306,6 @@ body {
                             font-size: 1rem;
                             line-height: 1.03;
                             letter-spacing: 0;
-                            padding-bottom: 1rem;
 
                             img {
                                 height: 18px;
