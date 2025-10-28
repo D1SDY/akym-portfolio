@@ -24,14 +24,15 @@ button {
 
 body .page {
   color: #fff;
-  background: #434343 url("../img/background.jpg") no-repeat;
-  background-size: 101.40625% 120.1851851852%;
+  background: #434343 url("../img/background.jpg") no-repeat center center;
+  background-size: 101.46vw 120.19vh;
+  will-change: background-position, background-size;
   transition: background-position 0.75s cubic-bezier(0.2, 0.7, 0.2, 1), background-size 0.75s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 body .page header {
-  padding: 2.625rem 4.5rem;
+  padding: 3.89vh 3.75vw;
   font-weight: 900 !important;
-  font-size: 1.25rem !important;
+  font-size: 2.083vh !important;
   line-height: 1.03;
   letter-spacing: 0;
   font-family: "Roboto", sans-serif;
@@ -47,36 +48,40 @@ body .page header a {
 }
 body .page h1 {
   margin: 0;
-  padding-top: 25px;
-  font-family: "roc-grotesk-compressed", sans-serif;
+  font-family: "roc-grotesk-condensed", sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: clamp(3.5rem, 14.375vw, 14.375rem);
-  line-height: 0.68;
-  letter-spacing: 0.35rem;
+  font-size: 11.98vw;
+  line-height: 0.73;
 }
 body .page .home-row {
-  margin: 0 6.5rem 5.5rem 5.125rem;
-  gap: clamp(1.25rem, 6.25vw, 7.5rem);
+  margin: 0 5.42vw 8.15vh 4.27vw;
+  gap: 6.25vw;
 }
 body .page .home-row .about {
-  max-width: 25rem;
+  max-width: 20.83vw;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 2.22vh;
   line-height: 1.03;
   letter-spacing: 0;
   font-family: "Roboto", sans-serif;
 }
 body .page .home-row .social ul {
+  padding: 0;
+  margin: 0;
   display: flex;
-  gap: 32px;
+  gap: 2.96vh;
   list-style: none;
   flex-direction: column;
+}
+body .page .home-row .social ul img {
+  width: 1.82vw;
+  aspect-ratio: 1/1;
 }
 body .page .library {
   position: fixed;
   inset: 0;
-  padding: 0 0 5.3125rem 5.5625rem;
+  padding: 0 0 7.87vh 4.64vw;
   pointer-events: none;
   opacity: 0;
   transform: translateY(6%);
@@ -96,15 +101,14 @@ body .page .library .col-1 {
 body .page .library .lib-title {
   margin: 0;
   line-height: 1.03;
-  font: 500 clamp(3rem, 16vw, 230px)/0.9 "roc-grotesk-compressed", sans-serif;
+  font: 500 21.3vh/0.9 "roc-grotesk-condensed", sans-serif;
   transform-origin: 65% 0%;
   transform: translateY(-100vh) scale(0.25);
   transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform-origin 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
   transform-box: border-box;
-  letter-spacing: 0.35rem;
 }
 body .page .library .tracks {
-  margin-top: 5.5rem;
+  margin-top: 8.15vh;
 }
 body .page .library .tracks li:nth-child(1) {
   transition-delay: 0.15s;
@@ -122,13 +126,13 @@ body .page .library .tracks li:nth-child(5) {
   transition-delay: 0.55s;
 }
 body .page .library .tracks .track {
-  gap: 50px;
+  gap: 4.63vh;
   color: #fff;
-  font-size: 24px;
+  font-size: 2.22vh;
   font-weight: 900;
   line-height: 1.03;
   font-family: "Roboto", sans-serif;
-  margin: 2.5625rem 0;
+  margin: 3.8vh 0;
 }
 body .page .library .tracks .track:first-child {
   margin-top: 0;
@@ -139,8 +143,8 @@ body .page .library .close-btn {
   right: 42px;
 }
 body .page .library .close-btn img {
-  height: 48px;
-  width: 48px;
+  width: 4.44vmin;
+  aspect-ratio: 1/1;
 }
 body .page .library .tracks audio {
   display: none !important;
@@ -157,9 +161,9 @@ body .page .library .tracks .track .icon::after {
   content: "▶";
   position: absolute;
   inset: 0;
-  left: 12px;
-  top: 12px;
-  font-size: 1rem;
+  left: 0.625vw;
+  top: 1.11vh;
+  font-size: 1.48vh;
   line-height: 1;
   opacity: 0;
   transform: scale(0.9);
@@ -173,7 +177,7 @@ body .page .library .tracks .track .icon:hover::after {
 }
 body .page .library .waveform {
   width: 100%;
-  height: 35px;
+  height: 3.24vh;
   display: block;
   cursor: pointer;
 }
@@ -209,54 +213,51 @@ body .page .home {
 }
 body #about:target ~ .page {
   background: #434343 url("../img/background.jpg") no-repeat;
-  background-size: 891px 594px;
-  background-position: 0 233px;
+  background-size: 46.41vw auto;
+  background-position: left center;
 }
 body #about:target ~ .page .biography {
   flex: 1;
   display: flex;
-}
-body #about:target ~ .page .biography h1 {
-  line-height: 0.69;
-  display: inline-block;
-  padding-left: 4rem;
+  padding-left: 4.3vw;
 }
 body #about:target ~ .page .biography .row {
-  gap: 18rem;
+  gap: 15vw;
 }
 body #about:target ~ .page .biography .row .col {
-  padding: 0 0 12rem 0;
+  padding: 0 0 15.78vh 0;
 }
 body #about:target ~ .page .biography .row .col .bio-text {
-  max-width: 20rem;
-  padding-top: 129px;
+  max-width: 16.67vw;
+  padding-top: 11.94vh;
   font-weight: 400;
-  font-size: clamp(1.5rem, 1rem + 1vw, 2.25rem);
+  font-size: 2.22vh;
   line-height: 1.03;
 }
 body #about:target ~ .page .biography .row .col .contact {
   font-family: "Roboto", sans-serif;
-  gap: 1.375rem;
+  gap: 2.04vh;
 }
 body #about:target ~ .page .biography .row .col .contact h2 {
-  padding-bottom: 5px;
+  font-size: 2.96vh;
+  padding-bottom: 0.46vh;
   font-weight: 500;
-  padding: 0 0 0.3rem 0;
+  padding: 0 0 0.44vh 0;
   margin: 0;
   line-height: 0.8;
 }
 body #about:target ~ .page .biography .row .col .contact .contact-row {
   display: flex;
   align-items: center;
-  gap: 1.8125rem;
+  gap: 2.69vh;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.48vh;
   line-height: 1.03;
   letter-spacing: 0;
 }
 body #about:target ~ .page .biography .row .col .contact .contact-row img {
-  height: 18px;
-  width: 18px;
+  width: 0.94vw;
+  aspect-ratio: 1/1;
 }
 body #about:target ~ .page .biography .row .col .contact .contact-row p {
   margin: 0;

@@ -11,58 +11,6 @@
             rel="stylesheet">
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const items = document.querySelectorAll('.tracks .track');
-            let currentAudio = null, currentItem = null;
-
-            items.forEach(item => {
-                const cover = item.querySelector('.col-1 img');
-                const audio = item.querySelector('audio');
-
-                if (!cover || !audio) return;
-
-                // Доступність
-                cover.setAttribute('role', 'button');
-                cover.setAttribute('aria-label', 'Play/Pause');
-                cover.tabIndex = 0;
-
-                function playThis() {
-                    // Зупинити попередній трек
-                    if (currentAudio && currentAudio !== audio) {
-                        currentAudio.pause();
-                        currentAudio.currentTime = 0;
-                        currentItem?.classList.remove('is-playing');
-                    }
-                    // Тогл поточного
-                    if (audio.paused) {
-                        audio.play();
-                        item.classList.add('is-playing');
-                        currentAudio = audio;
-                        currentItem = item;
-                    } else {
-                        audio.pause();
-                        item.classList.remove('is-playing');
-                        currentAudio = null;
-                        currentItem = null;
-                    }
-                }
-
-                cover.addEventListener('click', playThis);
-                cover.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playThis(); }
-                });
-
-                // При завершенні — зняти індикатор
-                audio.addEventListener('ended', () => {
-                    item.classList.remove('is-playing');
-                    if (currentAudio === audio) {
-                        currentAudio = null; currentItem = null;
-                    }
-                });
-            });
-        });
-    </script>
 
     <body>
         <span id="about" hidden></span>
@@ -242,11 +190,60 @@
                 </div>
             </main>
         </div>
+        </div>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const items = document.querySelectorAll('.tracks .track');
+                let currentAudio = null, currentItem = null;
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
+                items.forEach(item => {
+                    const cover = item.querySelector('.col-1 img');
+                    const audio = item.querySelector('audio');
+
+                    if (!cover || !audio) return;
+
+                    // Доступність
+                    cover.setAttribute('role', 'button');
+                    cover.setAttribute('aria-label', 'Play/Pause');
+                    cover.tabIndex = 0;
+
+                    function playThis() {
+                        // Зупинити попередній трек
+                        if (currentAudio && currentAudio !== audio) {
+                            currentAudio.pause();
+                            currentAudio.currentTime = 0;
+                            currentItem?.classList.remove('is-playing');
+                        }
+                        // Тогл поточного
+                        if (audio.paused) {
+                            audio.play();
+                            item.classList.add('is-playing');
+                            currentAudio = audio;
+                            currentItem = item;
+                        } else {
+                            audio.pause();
+                            item.classList.remove('is-playing');
+                            currentAudio = null;
+                            currentItem = null;
+                        }
+                    }
+
+                    cover.addEventListener('click', playThis);
+                    cover.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playThis(); }
+                    });
+
+                    // При завершенні — зняти індикатор
+                    audio.addEventListener('ended', () => {
+                        item.classList.remove('is-playing');
+                        if (currentAudio === audio) {
+                            currentAudio = null; currentItem = null;
+                        }
+                    });
+                });
+            });
+        </script>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -372,6 +369,9 @@
                 });
             });
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
     </body>
 
 </html>
