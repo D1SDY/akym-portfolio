@@ -40,7 +40,7 @@ body .page::before {
   will-change: background-size, background-position;
 }
 body header {
-  padding: 3.89vh 3.75vw;
+  padding: 3.89vh 3.75vw !important;
   font-weight: 900 !important;
   font-size: 2.083vh !important;
   line-height: 1.03;
@@ -144,25 +144,13 @@ body .library .tracks .track {
   font-family: "Roboto", sans-serif;
   margin: 3.8vh 0;
 }
-body .library .tracks .track:first-child {
-  margin-top: 0;
-}
-body .library .close-btn {
-  position: absolute;
-  top: 42px;
-  right: 42px;
-}
-body .library .close-btn img {
-  width: 4.44vmin;
-  aspect-ratio: 1/1;
-}
-body .library .tracks audio {
-  display: none !important;
-}
-body .library .tracks .track .icon img {
-  cursor: pointer;
-  position: relative;
-  display: inline-block;
+body .library .tracks .track.is-playing .icon::after {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  content: "❚❚";
+  opacity: 0.85;
+  transform: scale(1);
 }
 body .library .tracks .track .icon {
   position: relative;
@@ -171,8 +159,8 @@ body .library .tracks .track .icon::after {
   content: "▶";
   position: absolute;
   inset: 0;
-  left: 0.625vw;
-  top: 1.11vh;
+  display: grid;
+  place-items: center;
   font-size: 1.48vh;
   line-height: 1;
   opacity: 0;
@@ -185,18 +173,31 @@ body .library .tracks .track .icon:hover::after {
   opacity: 0.85;
   transform: scale(1);
 }
+body .library .tracks .track .icon img {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+body .library .tracks .track:first-child {
+  margin-top: 0;
+}
+body .library .tracks audio {
+  display: none !important;
+}
+body .library .close-btn {
+  position: absolute;
+  top: 42px;
+  right: 42px;
+}
+body .library .close-btn img {
+  width: 4.44vmin;
+  aspect-ratio: 1/1;
+}
 body .library .waveform {
   width: 100%;
   height: 3.24vh;
   display: block;
   cursor: pointer;
-}
-body .library .tracks .track.is-playing .icon::after {
-  left: 12px;
-  top: 12px;
-  content: "❚❚";
-  opacity: 0.85;
-  transform: scale(1);
 }
 @media (prefers-reduced-motion: reduce) {
   body .library .tracks .track .icon::after {
@@ -227,7 +228,6 @@ body .home {
 }
 #about:target ~ .page::before {
   background-size: 46.41vw 54.97vh;
-  /* твоя ціль */
   background-position: left center;
 }
 #about:target ~ .page .biography {
